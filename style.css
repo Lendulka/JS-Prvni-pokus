@@ -1,0 +1,23 @@
+h1 {
+    color: red;
+}
+
+.btn {
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: rgb(233, 166, 233);
+    font-weight: bolder;
+}
+
+#cube {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin-bottom: 30px;
+    background-color: aqua;
+    position: relative;
+    top: 5px;
+    left: 20px;
+}
