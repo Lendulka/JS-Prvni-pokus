@@ -1,5 +1,7 @@
 // ZMĚNA V HTML
 // querySelector je univerzální - lze vybírat podle tagu, třídy, id
+// najde vždy první výskyt
+
 /*
 var headline = document.querySelector("h1");
 console.log(headline);
@@ -20,6 +22,7 @@ console.log(paragraph1);
 */
 
 // pomocí JS jsme změnili obsah elementu v HTML
+
 /*
 document.querySelector("h1").textContent = "Já jsem nová h1.";
 document.querySelector("p").textContent = "Já jsem nový p.";
@@ -44,8 +47,9 @@ for (var i = 3; i < allParagraph.length; i++) {
 
 document.querySelector("h1").style.color = "green";
 
-/*
+
 // chci, aby <h1> zmizela
+/*
 document.querySelector("h1").style.display = "none";
 */
 
@@ -56,6 +60,7 @@ document.querySelector("h1").style.fontWeight = 400;
 // GetElementsByClassName a getElementById
 // GetElementsByClassName - HTML Collection, pracuje se jako s polem
 // můžu mít stejnou třídu u více elementů, takže mohu procházet cyklem
+
 /*
 var mojeTridy = document.getElementsByClassName("prvni")                       // již není třeba psát .
 console.log(mojeTridy);
@@ -87,8 +92,9 @@ console.log(firstParagraph);
 var html = document.querySelector("p").innerHTML;
 console.log(html);
 
-// ZJIŠŤUJEME ATRIBUTY JAKO SRC, ALT, HREF
+// ZJIŠŤUJEME ATRIBUTY JAKO SRC, ALT, HREF                  
 // Zda element <a> má atribut href. Výsledkem bude true nebo false.
+
 var text1 = document.querySelector("a").hasAttribute("href");
 console.log(text1);
 
@@ -115,14 +121,17 @@ console.log(seznam[4].textContent);
 */
 
 // JAK VYTVOŘIT ÚPLNĚ NOVÝ ELEMENT
+/*
 var newSpan = document.createElement("span");
 var myH1 = document.querySelector("h1");
-/*
+
 myH1.appendChild(newSpan, myH1);             // do <h1> jsem přidala <span> jako potomka
 console.log(myH1);                           // vypíše <h1> včetně potomka <span> 
 */
 
+/*
 document.body.insertBefore(newSpan, myH1);   // přidala jsem <span> před <h1>
+*/
 
 // CO VŠECHNO UMÍME A ÚVOD DO EVENTŮ
 /*
@@ -130,6 +139,7 @@ document.body.insertBefore(newSpan, myH1);   // přidala jsem <span> před <h1>
 2. Zpracujeme je (podmínky, cykly, funkce, proměnné atd.)
 3. Vypíšeme je zpět do stránky (umístíme je do HTML nebo změníme CSS)
 */
+
 // Opakování
 /*
 var name = prompt("Jak se jmenuješ?");
@@ -145,6 +155,7 @@ if (name === "David") {
 // EVENTY - zpráva, která se posílá kódu, že se na webu něco stalo (např. na něco bylo kliknuto, scrollovalo se,
 // změnila se velikost okna, stiskla se určitá klávesa)
 // EVENT LISTENER - funkce, která čeká na určitý event, a pak něco provede
+
 function welcome() {
     console.log("Vítejte u nás!");
 }
@@ -152,6 +163,7 @@ function welcome() {
 
 // kliknu na <h1>, spustí se funkce welcome
 // document.querySelector("h1").addEventListener("click", welcome); 
+
 // tady není nutné psát (), event listener je již funkce, která dokáže spustit funkci welcome
 // jedna funkce tedy automaticky spouští druhou funkci =  CALLBACK FUNCTION
 
@@ -173,6 +185,7 @@ mouseleave = odejití myši
 mousemove = jakýkoliv pohyb myši
 mouseover = myší nad elementem
 */
+
 /*
 function myEvent () {
     console.log("Event byl spuštěn.");
@@ -188,15 +201,10 @@ var button = document.getElementsByClassName("btn");
 button[0].addEventListener("click", clickMe);
 
 function clickMe(){
-    
     var myList = document.getElementById("listDve");
-    
     var newItem = document.createElement("li");
-    
     newItem.textContent = "Jsem tu nový";
-    
     myList.appendChild(newItem);
-    
 }
 
 // VYPISUJEME KLIKNUTÍ NA KLÁVESU
@@ -216,3 +224,24 @@ console.log(parseInt(style.left));
 // ParseInt () method parses a value as a string and returns the first integer
 console.log(style.top);
 console.log(style.backgroundColor);   // bez pomlčky
+
+// JavaScriptem ovlivňujeme HTML i CSS, kostku posouváme všemi směry
+var cube = document.getElementById("cube");
+var style = getComputedStyle(cube);
+document.body.addEventListener("keydown", myFunction);
+
+function myFunction (event) {
+    if (event.key === "ArrowRight") {
+        var oldLeft = parseInt(style.left);
+        var newLeft = oldLeft + 10;
+        cube.style.left = newLeft + "px";
+    }
+}
+
+
+/*
+key
+: 
+"ArrowRight"
+*/
+
